@@ -93,5 +93,9 @@ with open("chat_ui.html", "r") as f:
 def serve_ui():
     return CHAT_UI_HTML
 
+
+
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)
