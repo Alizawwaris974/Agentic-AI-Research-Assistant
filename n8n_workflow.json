@@ -1,0 +1,90 @@
+{
+  "name": "Agentic AI Research Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "title": "Agentic AI Research Assistant",
+          "subtitle": "Ask a research question — I can search the web, query a local knowledge base, run code, and summarise.",
+          "inputPlaceholder": "Ask a research question…"
+        }
+      },
+      "id": "a1111111-0000-4000-8000-000000000001",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [-260, 0],
+      "webhookId": "agentic-research-assistant-chat"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hedge-gravity-jester.ngrok-free.dev/research",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.chatInput, session_id: $('When chat message received').first().json.sessionId }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "a1111111-0000-4000-8000-000000000002",
+      "name": "Call FastAPI /research",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [0, 0],
+      "notes": "Replace the URL above with the public ngrok URL printed by Cell 11 of the Kaggle notebook, e.g. https://abcd-1-2-3-4.ngrok-free.app/research"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b2222222-0000-4000-8000-000000000001",
+              "name": "output",
+              "type": "string",
+              "value": "={{ $json.answer }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1111111-0000-4000-8000-000000000003",
+      "name": "Map answer -> output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [260, 0]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Call FastAPI /research",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call FastAPI /research": {
+      "main": [
+        [
+          {
+            "node": "Map answer -> output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "instanceId": "agentic-ai-research-assistant-template"
+  }
+}
