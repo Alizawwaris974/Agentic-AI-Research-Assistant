@@ -1,4 +1,4 @@
-# 🔬 Agentic AI Research Assistant
+#  Agentic AI Research Assistant
 
 **A powerful multi-agent research system built with LangGraph (ReAct), Gemini + Groq fallback, local RAG, safe code execution, and streaming UI.**
 
@@ -53,8 +53,10 @@ NGROK_AUTH_TOKEN=your_ngrok_token   # Optional
 4. Run the Server
 Bashpython main.py
 Open the printed public URL in your browser to access the Field Notes UI.
+```
 
 ## Production Deployment (Recommended)
+
 For persistent use with n8n, deploy the backend on a real hosting platform:
 Recommended Platforms (Free Tier Available)
 
@@ -80,7 +82,7 @@ Deploy
 After deployment, you will get a stable URL like:
 https://agentic-research-assistant.onrender.com
 
-🔗 Integration with n8n (Step-by-Step)
+## 🔗 Integration with n8n (Step-by-Step)
 Method 1: Import Ready Workflow (Recommended)
 
 Download n8n_workflow.json from this repo
