@@ -23,6 +23,7 @@ Designed for deep AI/ML research — it can search the web, query a curated know
 ---
 
 ## 📁 Project Structure
+```
 agentic-research-assistant/
 ├── main.py                    # FastAPI backend (for Render/Railway)
 ├── requirements.txt
@@ -36,6 +37,7 @@ agentic-research-assistant/
     ├── tools.py
     ├── agent.py
     └── utils.py
+```
 
 ## 🚀 Quick Start (Local / Kaggle)
 
