@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+langchain
+langgraph
+langchain-google-genai
+langchain-groq
+langchain-community
+langchain-huggingface
+chromadb
+sentence-transformers
+duckduckgo-search
+pydantic
+python-multipart
